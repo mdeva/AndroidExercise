@@ -79,7 +79,7 @@ public class ListActivity extends AppCompatActivity {
     }
 
     private void init() {
-        list = (RecyclerView)findViewById(R.id.list);
+        list = (RecyclerView) findViewById(R.id.list);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }

@@ -22,7 +22,7 @@ import static com.bumptech.glide.request.RequestOptions.centerInsideTransform;
  * Created by deverajan on 12/2/18.
  */
 
-public class ListAdapter extends  RecyclerView.Adapter<ListAdapter.MyViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
 
     private List<Listrow> listrows;
     Context mContext;
@@ -62,16 +62,16 @@ public class ListAdapter extends  RecyclerView.Adapter<ListAdapter.MyViewHolder>
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-    public TextView title, description;
-    public ImageView img;
+        public TextView title, description;
+        public ImageView img;
 
-    public MyViewHolder(View view) {
-        super(view);
-        title = (TextView) view.findViewById(R.id.title);
-        description = (TextView) view.findViewById(R.id.description);
-        img = (ImageView) view.findViewById(R.id.img);
+        public MyViewHolder(View view) {
+            super(view);
+            title = (TextView) view.findViewById(R.id.title);
+            description = (TextView) view.findViewById(R.id.description);
+            img = (ImageView) view.findViewById(R.id.img);
+        }
     }
-}
 
 }
 

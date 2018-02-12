@@ -15,8 +15,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/title"
@@ -53,9 +53,9 @@
 
                     <ImageView
                         android:id="@+id/img"
-                        android:padding="3dp"
                         android:layout_width="100dp"
-                        android:layout_height="100dp" />
+                        android:layout_height="100dp"
+                        android:padding="3dp" />
                 </LinearLayout>
 
 
