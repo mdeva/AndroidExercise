@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AndroidExcercise</string>
+    <string name="list_api">https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json</string>
+
+</resources>
