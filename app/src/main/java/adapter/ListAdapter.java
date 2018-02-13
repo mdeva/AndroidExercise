@@ -47,13 +47,18 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         Listrow listrow = listrows.get(position);
         holder.title.setText(listrow.getTitle());
         holder.description.setText(listrow.getDescription());
-        Glide.with(mContext)
-                .load(listrow.getImageHref())
-                .apply(centerInsideTransform()
-                        .placeholder(R.drawable.loading_picture)
-                        .error(R.drawable.loading_picture)
-                        .priority(Priority.HIGH))
-                .into(holder.img);
+        if (listrow.getImageHref() != null) {
+            holder.img.setVisibility(View.VISIBLE);
+            Glide.with(mContext)
+                    .load(listrow.getImageHref())
+                    .apply(centerInsideTransform()
+                            .placeholder(R.drawable.loading_picture)
+                            .error(R.drawable.loading_picture)
+                            .priority(Priority.HIGH))
+                    .into(holder.img);
+        } else {
+            holder.img.setVisibility(View.GONE);
+        }
     }
 
     @Override
