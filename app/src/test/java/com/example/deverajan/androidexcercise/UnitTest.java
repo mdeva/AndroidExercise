@@ -2,16 +2,8 @@ package com.example.deverajan.androidexcercise;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.net.ConnectivityManager;
 import android.util.DisplayMetrics;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
-
-import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
