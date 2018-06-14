@@ -4,16 +4,32 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.io.IOException;
+
 import Constant.Constant;
+import model.ListModel;
 import utils.Utils;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -28,6 +44,43 @@ public class UnitTest {
 
     @Mock
     Context mMockContext;
+
+
+    @Test
+    public void restAPITest()
+            throws ClientProtocolException, IOException {
+        // Given
+        HttpUriRequest request = new HttpGet( "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json");
+        // When
+        CloseableHttpResponse httpResponse = HttpClientBuilder.create().build().execute( request );
+        // Then
+        assertThat(
+                httpResponse.getStatusLine().getStatusCode(),
+                equalTo(HttpStatus.SC_OK));
+    }
+
+    @Test
+    public void restJSONTest()
+            throws ClientProtocolException, IOException {
+
+        // Given
+        HttpUriRequest request = new HttpGet( "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json" );
+
+        // When
+        CloseableHttpResponse response = HttpClientBuilder.create().build().execute( request );
+
+        HttpEntity entity = response.getEntity();
+        String responseString = EntityUtils.toString(entity, "UTF-8");
+
+        // Then
+        Gson gson = new GsonBuilder().create();
+        ListModel listModel = gson.fromJson(responseString, ListModel.class);
+
+        // Then
+        assertEquals("About Canada",listModel.getTitle() );
+    }
+
+
 
     @Test
     public void addition_isCorrect() throws Exception {
