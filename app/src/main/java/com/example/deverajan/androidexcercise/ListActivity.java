@@ -78,6 +78,7 @@ public class ListActivity extends AppCompatActivity {
             });
             // Adding request to request queue
             AppController.getInstance().addToRequestQueue(jsonObjReq, String.valueOf(jsonObjReq));
+
         } else {
             Toast.makeText(getApplicationContext(),"No internet connection!",Toast.LENGTH_SHORT).show();
             if (swipeRefreshLayout != null ) {
